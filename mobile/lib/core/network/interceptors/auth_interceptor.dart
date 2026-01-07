@@ -80,7 +80,6 @@ class AuthInterceptor extends Interceptor {
           try {
             clonedRequest = await _retryRequest(err.requestOptions);
           } catch (e) {
-            _logger.e('Failed to retry original request', error: e);
             await _handleLogout();
             return handler.reject(err);
           }
@@ -90,7 +89,6 @@ class AuthInterceptor extends Interceptor {
             try {
               await _retryRequest(pending);
             } catch (e) {
-              _logger.w('Failed to retry pending request: $e');
               // Continue with other pending requests
             }
           }
@@ -100,10 +98,9 @@ class AuthInterceptor extends Interceptor {
         }
       } catch (e, stackTrace) {
         // Refresh failed, redirect to login
-        _logger.e('Token refresh failed', error: e, stackTrace: stackTrace);
         await _handleLogout();
         return handler.reject(err);
-      } finally{
+      } finally {
         _isRefreshing = false;
       }
     }
