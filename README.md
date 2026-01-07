@@ -1,6 +1,6 @@
 # Paraclete
 
-> Mobile-first AI coding platform: Voice-first, model-agnostic, no laptop required.
+Mobile-first AI coding platform: Voice-first, model-agnostic and other features.
 
 ## Overview
 
@@ -16,10 +16,10 @@ Paraclete is a mobile command center for AI development. Developers delegate to 
 
 ## Tech Stack
 
-**Mobile:** Flutter 3.27+ • Dart 3.6+ • Riverpod 3
-**Backend:** FastAPI • LangGraph 1.0 • PostgreSQL
-**Voice:** Deepgram • ElevenLabs (120ms WebRTC)
-**Infrastructure:** Fly.io Machines • Tailscale VPN
+1. **Mobile:** Flutter 3.27+, Dart 3.6+, Riverpod 3
+2. **Backend:** FastAPI, LangGraph 1.0, PostgreSQL
+3. **Voice:** Deepgram, ElevenLabs (120ms WebRTC)
+4. **Infrastructure:** Fly.io Machines, Tailscale VPN
 
 ## Project Structure
 
@@ -28,10 +28,6 @@ Paraclete/
 ├── backend/          # FastAPI + LangGraph
 ├── mobile/           # Flutter mobile app
 ```
-
-## Documentation
-
-See [CLAUDE.md](CLAUDE.md) for complete technical specification.
 
 ## License
 
