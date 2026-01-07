@@ -1,0 +1,22 @@
+# Root gitignore for Paraclete monorepo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment
+.env
+.env.local
+*.log
+
+# Documentation
+docs/
+
+# Claude Agent Definitions
+.claude/

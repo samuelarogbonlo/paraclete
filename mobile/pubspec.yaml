@@ -1,0 +1,86 @@
+name: paraclete
+description: Mobile-first AI coding platform - Voice-first, model-agnostic, no laptop required.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.6.0 <4.0.0'
+  flutter: '>=3.27.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # State Management
+  flutter_riverpod: ^2.5.0
+  riverpod_annotation: ^2.3.0
+
+  # Navigation
+  go_router: ^14.0.0
+
+  # HTTP & WebSocket
+  dio: ^5.4.0
+  web_socket_channel: ^2.4.0
+
+  # Storage
+  flutter_secure_storage: ^9.0.0
+  shared_preferences: ^2.2.0
+
+  # Connectivity
+  connectivity_plus: ^6.0.0
+
+  # UI Components
+  cupertino_icons: ^1.0.6
+
+  # Future features (prepared imports)
+  # Voice Recording
+  record: ^5.0.0
+  # Audio Playback
+  audioplayers: ^5.2.0
+  # Deepgram STT
+  deepgram_speech_to_text: ^2.3.0
+  # SSH
+  dartssh2: ^2.9.0
+  # Terminal
+  xterm: ^4.0.0
+  # Push Notifications
+  firebase_messaging: ^14.7.0
+  firebase_core: ^2.24.0
+  # Background Tasks
+  workmanager: ^0.5.0
+
+  # Utilities
+  equatable: ^2.0.5
+  json_annotation: ^4.8.1
+  freezed_annotation: ^2.4.1
+  logger: ^2.0.2
+  path_provider: ^2.1.0
+  intl: ^0.19.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  build_runner: ^2.4.0
+  riverpod_generator: ^2.3.0
+  json_serializable: ^6.7.1
+  freezed: ^2.4.0
+  mockito: ^5.4.0
+
+flutter:
+  uses-material-design: true
+
+  # Assets will be added later
+  # assets:
+  #   - assets/images/
+  #   - assets/icons/
+
+  # Fonts will be added later
+  # fonts:
+  #   - family: Inter
+  #     fonts:
+  #       - asset: fonts/Inter-Regular.ttf
+  #       - asset: fonts/Inter-Medium.ttf
+  #         weight: 500
+  #       - asset: fonts/Inter-Bold.ttf
+  #         weight: 700
