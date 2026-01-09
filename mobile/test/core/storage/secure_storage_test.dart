@@ -15,8 +15,7 @@ void main() {
 
     setUp(() {
       mockStorage = MockFlutterSecureStorage();
-      // Note: In production code, we'd need to inject the storage dependency
-      // For now, we're testing the service's logic flow
+      service = SecureStorageService(storage: mockStorage);
     });
 
     group('Token Management', () {

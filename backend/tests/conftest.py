@@ -16,8 +16,8 @@ from app.core.security import hash_password, create_token_pair
 from app.config import settings
 
 
-# Test database URL
-TEST_DATABASE_URL = "postgresql+asyncpg://postgres:postgres@localhost:5432/paraclete_test"
+# Test database URL (using port 5433 as per docker-compose.yml)
+TEST_DATABASE_URL = "postgresql+asyncpg://postgres:postgres@localhost:5433/paraclete_test"
 
 
 @pytest.fixture(scope="session")
@@ -149,6 +149,16 @@ async def test_session(db_session: AsyncSession, test_user: User) -> DBSession:
     await db_session.commit()
     await db_session.refresh(session)
     return session
+
+
+@pytest.fixture(autouse=True)
+def mock_api_keys(monkeypatch):
+    """Provide mock API keys for all tests."""
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "test-key-anthropic-1234567890")
+    monkeypatch.setenv("OPENAI_API_KEY", "test-key-openai-1234567890")
+    monkeypatch.setenv("GOOGLE_API_KEY", "test-key-google-1234567890")
+    monkeypatch.setenv("DEEPGRAM_API_KEY", "test-key-deepgram-1234567890")
+    monkeypatch.setenv("ELEVENLABS_API_KEY", "test-key-elevenlabs-1234567890")
 
 
 @pytest.fixture

@@ -1,13 +1,11 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:mockito/annotations.dart';
 import 'package:dio/dio.dart';
 import 'package:paraclete/core/network/api_client.dart';
 import 'package:paraclete/core/storage/secure_storage.dart';
 import 'package:paraclete/core/config/app_config.dart';
-
-@GenerateMocks([Dio, SecureStorageService])
-import 'api_client_test.mocks.dart';
+import '../../mocks/mock_secure_storage.dart';
+import 'api_client_test.mocks.dart' hide MockSecureStorageService;
 
 void main() {
   group('ApiClient', () {

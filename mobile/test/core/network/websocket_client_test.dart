@@ -2,13 +2,11 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:mockito/annotations.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 import 'package:paraclete/core/network/websocket_client.dart';
 import 'package:paraclete/core/storage/secure_storage.dart';
-
-@GenerateMocks([SecureStorageService, WebSocketChannel, WebSocketSink])
-import 'websocket_client_test.mocks.dart';
+import '../../mocks/mock_secure_storage.dart';
+import 'websocket_client_test.mocks.dart' hide MockSecureStorageService;
 
 void main() {
   group('WebSocketClient', () {

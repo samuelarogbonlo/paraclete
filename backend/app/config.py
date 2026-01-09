@@ -98,7 +98,23 @@ class Settings(BaseSettings):
 
     # Infrastructure
     FLY_API_TOKEN: Optional[str] = Field(default=None)
+    FLY_APP_NAME: Optional[str] = Field(default="paraclete-vms")
+    FLY_ORG_SLUG: Optional[str] = Field(default=None)
     TAILSCALE_AUTH_KEY: Optional[str] = Field(default=None)
+
+    # VM Configuration
+    VM_DEFAULT_REGION: str = Field(default="iad")  # US East by default
+    VM_DEFAULT_CPU_TYPE: str = Field(default="shared-cpu-1x")
+    VM_DEFAULT_MEMORY_MB: int = Field(default=1024)  # 1GB
+    VM_IDLE_TIMEOUT_MINUTES: int = Field(default=30)  # Auto-shutdown after 30min
+    VM_MAX_PER_USER: int = Field(default=3)  # Limit concurrent VMs per user
+
+    # MCP Server Configuration
+    MCP_GITHUB_SERVER_URL: Optional[str] = Field(default=None)  # For remote GitHub MCP
+    MCP_FIGMA_SERVER_URL: Optional[str] = Field(default=None)
+    MCP_SLACK_SERVER_URL: Optional[str] = Field(default=None)
+    MCP_REQUEST_TIMEOUT_SECONDS: int = Field(default=30)
+    MCP_MAX_RETRIES: int = Field(default=3)
 
     # Redis (optional, for caching/sessions)
     REDIS_URL: Optional[str] = Field(default="redis://localhost:6379")

@@ -20,6 +20,7 @@ class AppColors {
   static const Color accentDark = Color(0xFF059669); // Emerald 600
 
   // Neutral colors
+  static const Color neutral50 = Color(0xFFFAFAFA);
   static const Color neutral100 = Color(0xFFF5F5F5);
   static const Color neutral200 = Color(0xFFE5E5E5);
   static const Color neutral300 = Color(0xFFD4D4D4);

@@ -14,6 +14,8 @@ from app.db.database import init_db, close_db
 from app.core.exceptions import ParacleteException
 from app.api.v1.router import api_router
 from app.api.websocket import router as websocket_router
+from app.mcp.proxy import get_mcp_proxy
+from app.services.compute.scheduler import start_vm_scheduler, stop_vm_scheduler
 
 # Configure logging
 logging.basicConfig(
@@ -58,10 +60,43 @@ async def lifespan(app: FastAPI) -> AsyncGenerator:
         except Exception as e:
             logger.warning(f"Failed to initialize Firebase: {e}")
 
+    # Initialize MCP Proxy Server
+    try:
+        mcp_proxy = await get_mcp_proxy()
+        logger.info("MCP Proxy Server initialized")
+    except Exception as e:
+        logger.warning(f"Failed to initialize MCP proxy: {e}")
+
+    # Start VM scheduler for auto-shutdown
+    if settings.FLY_API_TOKEN:
+        try:
+            await start_vm_scheduler()
+            logger.info("VM scheduler started")
+        except Exception as e:
+            logger.warning(f"Failed to start VM scheduler: {e}")
+    else:
+        logger.info("VM scheduler disabled (FLY_API_TOKEN not set)")
+
     yield
 
     # Shutdown
     logger.info("Shutting down Paraclete API...")
+
+    # Stop VM scheduler
+    try:
+        await stop_vm_scheduler()
+        logger.info("VM scheduler stopped")
+    except Exception as e:
+        logger.warning(f"Error stopping VM scheduler: {e}")
+
+    # Shutdown MCP proxy
+    try:
+        mcp_proxy = await get_mcp_proxy()
+        await mcp_proxy.shutdown()
+        logger.info("MCP Proxy Server shutdown")
+    except Exception as e:
+        logger.warning(f"Error shutting down MCP proxy: {e}")
+
     await close_db()
     logger.info("Cleanup complete")
 

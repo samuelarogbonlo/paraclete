@@ -1,0 +1,56 @@
+# Core
+fastapi
+uvicorn[standard]
+python-multipart
+
+# Database
+sqlalchemy
+alembic
+asyncpg
+psycopg2-binary
+greenlet
+
+# Data validation
+pydantic>=2.7.4
+pydantic-settings
+
+# Security
+python-jose[cryptography]
+passlib[bcrypt]
+bcrypt>=3.2.2
+httpx
+cryptography
+
+# Firebase for push notifications
+firebase-admin
+
+# Utils
+python-dotenv
+aiofiles
+
+# Redis for rate limiting and caching
+redis[asyncio]
+
+# Development
+pytest
+pytest-asyncio
+black
+ruff
+
+# LangGraph and LangChain
+langgraph
+langchain
+langchain-anthropic
+langchain-openai
+langchain-google-genai
+
+# AI SDKs
+anthropic
+openai
+google-generativeai
+
+# MCP Protocol
+mcp
+
+# Async utilities
+anyio
